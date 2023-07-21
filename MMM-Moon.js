@@ -3,11 +3,20 @@ Module.register("MMM-Moon", {
     category: "Astronomy",
     lat: 41.657,
     lon: 91.534,
-    timezone: "America/Chicago"
+    timezone: "America/Chicago",
+    updateInterval: 21600000, // Every six  hours
   },
   content: "",
 
-  start: function () {},
+  start: function () {
+    const m = this
+    Log.log(" Schedule update timer.")
+                setInterval(function() {
+                        m.sendSocketNotification("getcontent", m.config)
+                        Log.log("requested scheduled update")
+                }, this.config.updateInterval);
+
+  },
   getDom: function () {
     const outerDiv = document.createElement("div");
     if (this.content) {

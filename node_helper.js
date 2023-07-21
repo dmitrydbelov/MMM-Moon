@@ -65,14 +65,13 @@ module.exports = NodeHelper.create({
     const finalDate = `${timezoneD.getFullYear()}-${`0${
       timezoneD.getMonth() + 1
     }`.slice(-2)}-${`0${timezoneD.getDate()}`.slice(-2)}`;
-
     const body = {
       format: "png",
       style: {
         moonStyle: "default",
 
-        backgroundStyle: "stars",
-        backgroundColor: "white",
+        backgroundStyle: "solid",
+        backgroundColor: "transparent",
         headingColor: "white",
         textColor: "white"
       },
@@ -82,7 +81,8 @@ module.exports = NodeHelper.create({
         date: finalDate
       },
       view: {
-        type: "portrait-simple"
+        type: "portrait-simple",
+        orientation:  "south-up"
       }
     };
 
